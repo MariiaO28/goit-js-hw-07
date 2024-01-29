@@ -1,49 +1,44 @@
 'use strict';
 
-// const input = document.querySelector('input');
-// const button = document.querySelector('#controls button');
-// const boxes = document.querySelector('#boxes');
-// const createBtn = button.hasAttribute('create');
-// const destroyBtn = button.hasAttribute('destroy');
+const input = document.querySelector('input');
+const buttonCreate = document.querySelector('button[data-create]');
+const buttonDestroy = document.querySelector('button[data-destroy]');
+const boxesField = document.querySelector('div#boxes');
 
-// // /Треба видалаити колір кнопок у ССС і створити кольори кнопок за топомогою дата-атрибутів в джс створити/ 
-const input = document.querySelector('#controls input');
-const button = document.querySelector('#controls button');
-const boxesField = document.querySelector('#boxes');
 
-let width = 30;
-let height = 30;
-
-    
 function getRandomHexColor() {  
     return `#${Math.floor(Math.random() * 16777215)
         .toString(16)
         .padStart(6, 0)}`;
 };
 
-
 function createBoxes(amount) {
-    let amount = input;
-    for (let i = 0; i <= amount; i += 1) {
+    destroyBoxes();
+
+    let width = 30;
+    let height = 30;
+    const margin = 16;
+
+    for (let i = 1; i <= amount; i += 1) {
         const color = getRandomHexColor(); 
         boxesField.insertAdjacentHTML("beforeend",
     `<div class = "box"
-      style = "width: ${width}px; height: ${height}px; background-color: ${color};">
+      style = "width: ${width}px; height: ${height}px; margin-right: ${margin}px; background-color: ${color};">
     </div>`);
         width += 10;
         height += 10;
     };
-    return createBoxes;
 };
 
-// function amountValidation() {
-//     Number(createBoxes(Number)) <= 100? createBoxes : 
-// };
+buttonCreate.addEventListener('click',() => {
+    if (Number(input.value) >= 1 && Number(input.value) <= 100) {
+        createBoxes(Number(input.value))
+    };
+    input.value = "";
+});
 
-button.addEventListener('click', createBoxes, amountValidation);
+function destroyBoxes() {
+    boxesField.innerHTML = "";
+};
 
-function boxesDestroy() {
-    
-}
-
-button.removeEventListener('click', boxesCreate, boxSizesFormula)
+buttonDestroy.addEventListener('click', destroyBoxes);

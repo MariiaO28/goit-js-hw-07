@@ -95,8 +95,8 @@ button:last-child:focus {
 
 #boxes {
     display: flex;
-    width: 486px;
-    height: 160px;
+    flex-wrap: wrap;
+    max-width: 486px;
     margin: 0 auto;
     padding: 32px;
     border: 1px solid transparent;

@@ -37,11 +37,8 @@ const createImage = ({ url, alt }) => {
     galleryImage.src = url;
     galleryImage.alt = alt;
 
-    galleryItem.appendChild(galleryImage);
+    galleryItem.append(galleryImage);
     return galleryItem;
 };
 
-images.forEach(image => {
-  const galleryItem = createImage(image);
-  list.append(galleryItem);
-});
+images.forEach(image => list.append(createImage(image)));
