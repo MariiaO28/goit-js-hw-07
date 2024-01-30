@@ -28,17 +28,10 @@ const images = [
 ];
 
 const list = document.querySelector('ul.gallery');
+let galleryHTML = '';
 
-const createImage = ({ url, alt }) => {
-    const galleryItem = document.createElement('li');
-    galleryItem.classList.add('gallery-item');
+images.forEach(image => {
+  galleryHTML += `<li class="gallery-item"><img src="${image.url}" alt="${image.alt}"></li>`;
+});
 
-    const galleryImage = document.createElement('img');
-    galleryImage.src = url;
-    galleryImage.alt = alt;
-
-    galleryItem.append(galleryImage);
-    return galleryItem;
-};
-
-images.forEach(image => list.append(createImage(image)));
+list.insertAdjacentHTML('beforeend', galleryHTML);

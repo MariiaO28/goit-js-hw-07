@@ -1,6 +1,6 @@
 'use strict';
 
-const registrForm = document.querySelector('form.login-form');
+const registrationForm = document.querySelector('form.login-form');
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -8,19 +8,19 @@ function handleSubmit(event) {
     const email = form.elements.email.value;
     const password = form.elements.password.value;
 
-    if (email === "" || password === "") {
+    if (email.trim() === "" || password.trim() === "") {
         return alert("All form fields must be filled in");
     } else { 
         const customerData = {
-            email: email.trim(),
-            password: password.trim()
+            email: email,
+            password: password
         }
         console.log(customerData);
     }
         form.reset();
 }
 
-registrForm.addEventListener("submit", handleSubmit);
+registrationForm.addEventListener("submit", handleSubmit);
 
 const placeholdersInfo = document.querySelectorAll("input");
 

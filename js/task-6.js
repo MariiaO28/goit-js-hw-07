@@ -5,28 +5,25 @@ const buttonCreate = document.querySelector('button[data-create]');
 const buttonDestroy = document.querySelector('button[data-destroy]');
 const boxesField = document.querySelector('div#boxes');
 
-
 function getRandomHexColor() {  
     return `#${Math.floor(Math.random() * 16777215)
-        .toString(16)
-        .padStart(6, 0)}`;
+    .toString(16)
+    .padStart(6, 0)}`;
 };
+
+let size = 30;
+const increaseSize = 10;
+const margin = 16;
 
 function createBoxes(amount) {
     destroyBoxes();
-
-    let width = 30;
-    let height = 30;
-    const margin = 16;
-
     for (let i = 1; i <= amount; i += 1) {
         const color = getRandomHexColor(); 
         boxesField.insertAdjacentHTML("beforeend",
     `<div class = "box"
-      style = "width: ${width}px; height: ${height}px; margin-right: ${margin}px; background-color: ${color};">
+      style = "width: ${size}px; height: ${size}px; margin-right: ${margin}px; background-color: ${color};">
     </div>`);
-        width += 10;
-        height += 10;
+        size += increaseSize;
     };
 };
 
