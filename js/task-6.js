@@ -11,19 +11,18 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 };
 
-let size = 30;
-const increaseSize = 10;
-const margin = 16;
-
 function createBoxes(amount) {
+    const initialSize = 30;
+    const increaseSize = 10;
+
     destroyBoxes();
     for (let i = 1; i <= amount; i += 1) {
         const color = getRandomHexColor(); 
-        boxesField.insertAdjacentHTML("beforeend",
-    `<div class = "box"
-      style = "width: ${size}px; height: ${size}px; margin-right: ${margin}px; background-color: ${color};">
+        const size = initialSize + (i - 1) * increaseSize;
+        boxesField.insertAdjacentHTML('beforeend',
+    `<div class = 'box'
+      style = 'width: ${size}px; height: ${size}px; background-color: ${color};'>
     </div>`);
-        size += increaseSize;
     };
 };
 
@@ -31,11 +30,11 @@ buttonCreate.addEventListener('click',() => {
     if (Number(input.value) >= 1 && Number(input.value) <= 100) {
         createBoxes(Number(input.value))
     };
-    input.value = "";
+    input.value = '';
 });
 
 function destroyBoxes() {
-    boxesField.innerHTML = "";
+    boxesField.innerHTML = '';
 };
 
 buttonDestroy.addEventListener('click', destroyBoxes);
